@@ -19,3 +19,20 @@ vector<int> twoSum(vector<int>& nums, int target) {
     result.push_back(-1);
     return result;
 }
+
+int coinChange(vector<int>& coins, int sum)
+{
+    if(sum == 0) return 0;
+    int ans = INT_MAX;
+    for(auto coin:coins)
+    {
+        if(sum - coin < 0) continue;
+        int subProb = coinChange(coins, sum - coin);
+        if (subProb == -1)
+        {
+            continue;
+        }
+        ans = min(ans, subProb + 1);
+    }
+    return ans == INT_MAX ? -1 : ans;
+}

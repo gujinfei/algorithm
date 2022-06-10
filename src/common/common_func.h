@@ -6,4 +6,6 @@ using namespace std;
 
 vector<int> twoSum(vector<int>& nums, int target);
 
+int coinChange(vector<int>& coins, int sum);
+
 #endif
