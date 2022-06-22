@@ -3,8 +3,7 @@
         {
             "name": "macOS",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/local/Cellar/libevent/2.1.8/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "macFrameworkPath": [
