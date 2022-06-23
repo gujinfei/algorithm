@@ -25,9 +25,20 @@ void testCoinChange()
     cout <<"At least need:" << result << endl;
 }
 
+void testQuickSort()
+{
+    int dst[10] = {12,4,5,3,6,4,7,1,2,100};
+    quicksort(dst, 0 , 9); 
+    for(auto i : dst){
+        cout << i << " "; 
+    }
+    cout << endl;
+}
+
 int main()
 {
-    testCoinChange();	     
-    cout << endl;
+    //testCoinChange();	 
+    testQuickSort();
+    cout << "test over!!" << endl;
 	return 0;
 }

@@ -1,6 +1,43 @@
 #include "common_func.h"
 #include<unordered_map>
 
+int quicksort(int src[], int first, int last)
+{
+    int key = src[first];
+    auto i = first;
+    auto j = last;
+    int index = -1;
+
+    while(j >= i)
+    {
+        if(src[j] < key) {
+            while (i < j) {
+                i++;
+                if(src[i] > key)
+                {
+                    int temp = src[i];
+                    src[i] = src[j];
+                    src[j] = temp;
+                    break;
+                } 
+            }  
+        } 
+        if(i == j) {
+            src[first] = src[i];
+            src[i] = key; 
+            index = i;
+            break;
+        }
+        j--; 
+    }
+ 
+    if(index-1 > first)   
+        quicksort(src, first, index-1);
+    if(last > index+1)
+        quicksort(src, index+1, last);
+    return 0;
+}
+
 vector<int> twoSum(vector<int>& nums, int target) {
     int n = nums.size();
     unordered_map<int, int> index;
