@@ -1,6 +1,61 @@
 #include "common_func.h"
 #include<unordered_map>
 
+void merge(int src[], int low, int mid, int high)
+{
+    int* temp = new int[high-low+1];
+    int ileft = low;
+    int iright = mid+1;
+    int base = 0;
+    bool useleft  = false;
+    bool useright = false;
+    while(1)
+    {   
+        if(ileft > mid && iright > high)
+        {
+            break;
+        }
+        if(useright){
+            temp[base++] = src[iright++];
+        } else if (useleft) {
+            temp[base++] = src[ileft++];
+        } else {
+            if(src[ileft] < src[iright])
+                temp[base++] = src[ileft++];
+            else
+                temp[base++] = src[iright++];
+        }  
+        if(ileft > mid) useright = true;
+        if(iright > high) useleft = true; 
+    }
+    int loop = high-low+1;
+    for (size_t i = 0; i < loop; i++)
+    {
+        src[low] = temp[i];
+        low++;
+    }
+    delete[] temp;
+}
+
+int mergeSort(int src[], int low, int high)
+{
+    if(low >= high)
+        return 0;
+    if(high - low == 1) {
+        int temp = src[low];
+        if(src[low] <= src[high])
+            return 1;
+        src[low] = src[high];
+        src[high] = temp;
+        return 1;
+    } 
+    int mid = (low+high) / 2;
+    mergeSort(src, low, mid);
+    mergeSort(src, mid+1, high);
+    merge(src, low, mid, high);
+    return 0;
+}
+
 int quicksort(int src[], int first, int last)
 {
     int key = src[first];

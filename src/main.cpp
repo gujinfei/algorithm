@@ -35,10 +35,20 @@ void testQuickSort()
     cout << endl;
 }
 
+void testMergeSort()
+{
+    int dst[12] = {32,1002,12,4,5,3,6,4,7,1,2,100};
+    mergeSort(dst, 0 , 11); 
+    for(auto i : dst){
+        cout << i << " "; 
+    }
+    cout << endl;
+}
+
 int main()
 {
     //testCoinChange();	 
-    testQuickSort();
+    testMergeSort();
     cout << "test over!!" << endl;
 	return 0;
 }

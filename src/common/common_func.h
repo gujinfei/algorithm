@@ -10,4 +10,6 @@ int coinChange(vector<int>& coins, int sum);
 
 int quicksort(int src[], int first, int last);
 
+int mergeSort(int src[], int low, int high);
+
 #endif
